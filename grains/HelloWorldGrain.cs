@@ -10,7 +10,7 @@ namespace grains;
 public class HelloWorldGrain : IHelloWorldGrain, IGrainBase
 {
     private readonly ILogger<HelloWorldGrain> _logger;
-    private readonly HelloWorldGrainImpl _impl;
+    private readonly IHelloWorldGrain _impl;
 
     public HelloWorldGrain(IGrainContext grainContext, ILogger<HelloWorldGrain> logger)
     {
@@ -27,8 +27,5 @@ public class HelloWorldGrain : IHelloWorldGrain, IGrainBase
 
     public IGrainContext GrainContext { get; }
 
-    public Task<FSharpOption<int>> Hello(FSharpOption<string> name)
-    {
-        return ((IHelloWorldGrain)_impl).Hello(name);
-    }
+    public Task<FSharpOption<int>> Hello(FSharpOption<string> name) => _impl.Hello(name);
 }

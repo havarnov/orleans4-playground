@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="4.0.0-preview2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\interfaces.fsharp\interfaces.fsharp.fsproj" />
+  </ItemGroup>
+
 </Project>

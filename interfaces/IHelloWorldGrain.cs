@@ -3,7 +3,6 @@ using Orleans;
 
 namespace interfaces;
 
-public interface IHelloWorldGrain : IGrainWithStringKey
+public interface IHelloWorldGrain : interfaces.fsharp.IHelloWorldGrain
 {
-    Task<FSharpOption<int>> Hello(FSharpOption<string> name);
 }
