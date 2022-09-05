@@ -32,9 +32,15 @@ let main () = task {
     let clusterClient = host.Services.GetRequiredService<IClusterClient>();
     do! Task.Delay(1000)
 
+    let mutable count = 0
     while true do
-        let! res = clusterClient.GetGrain<IHelloWorldGrain>("yo").Hello(Some("yada"))
-        printfn "%A" res
+        if count % 2 = 0 then
+            let! res = clusterClient.GetGrain<IHelloWorldGrain>("yo").Hello(Some("yada"))
+            printfn "%A" res
+        else
+            let! res = clusterClient.GetGrain<IHelloWorldGrain>("yo").CustomTypes(Some({ Id = 42; Name = "the answer" }))
+            printfn "%A" res
+        count <- count + 1
         do! Task.Delay(TimeSpan.FromSeconds(5))
 
     do! host.StopAsync(TimeSpan.FromSeconds(2000));

@@ -1,7 +1,4 @@
-﻿using Microsoft.FSharp.Core;
-using Orleans;
-
-namespace interfaces;
+﻿namespace interfaces;
 
 public interface IHelloWorldGrain : interfaces.fsharp.IHelloWorldGrain
 {
